@@ -2,17 +2,27 @@ $(document).on('ready', iniciarTemporizador);
 
 function iniciarTemporizador() {
 
-	var fechaFinal = new Date(2013, 07, 30, 00, 00, 00);
+	var fechaFinal = new Date(2013, 09, 13, 14, 00, 00);
 	var fechaHoy = new Date();
 
 	var diferenciaMilisegundos = fechaFinal.getTime() - fechaHoy.getTime();
 	var diferenciaSegundos = (diferenciaMilisegundos/1000);
 
 	var clock = $("#mi-reloj").FlipClock({
-	clockFace: 'DailyCounter'
+    	clockFace: 'DailyCounter',
+        callbacks: {
+            interval: redireccionar
+        },
 	});
 
 	clock.setTime(diferenciaSegundos);
 	clock.setCountdown(true);
+
+    function redireccionar()
+    {
+        if (clock.getTime() <= 0) {
+            window.location.replace('https://twitter.com/danielromeroauk');
+        }
+    }
 
 }
