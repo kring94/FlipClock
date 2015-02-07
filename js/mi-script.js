@@ -1,9 +1,19 @@
-$(document).on('ready', iniciarTemporizador);
+$(document).on('ready', function(){
 
-function iniciarTemporizador() {
+    var dominio = 'http://localhost:8888/hora.php';
 
-	var fechaFinal = new Date(2013, 09, 13, 14, 00, 00);
-	var fechaHoy = new Date();
+    var servidor = $.get(dominio +'hora.php', function(data){
+        horaServidor = data;
+        iniciarTemporizador(horaServidor);
+    });
+
+});
+
+function iniciarTemporizador(horaServidor) {
+
+	var fechaFinal = new Date(2015, 01, 08, 00, 00, 00);
+    //var fechaHoy = new Date();
+    var fechaHoy = new Date(horaServidor);
 
 	var diferenciaMilisegundos = fechaFinal.getTime() - fechaHoy.getTime();
 	var diferenciaSegundos = (diferenciaMilisegundos/1000);
