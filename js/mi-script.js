@@ -1,8 +1,8 @@
 $(document).on('ready', function(){
 
-    var dominio = 'http://localhost:8888/hora.php';
+    var dominio = 'http://localhost:8888';
 
-    var servidor = $.get(dominio +'hora.php', function(data){
+    var servidor = $.get(dominio +'/hora.php', function(data){
         horaServidor = data;
         iniciarTemporizador(horaServidor);
     });
