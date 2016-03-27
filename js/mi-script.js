@@ -20,10 +20,11 @@ function iniciarTemporizador(horaServidor) {
     /**
      * Fecha en la que el contador marcará cero.
      *
-     * Date(año, mes, dia, minutos, segundos).
+     * Date(año, mes, día, horas, minutos, segundos).
      *
      * año: número enero, ejemplo: 2016
      * mes: valores desde 0 (enero) a 11 (diciembre).
+     * día: el día del mes.
      * horas: valores desde 0 (12 AM) a 23 (11 PM).
      * minutos: valores desde 0 a 59.
      * segundos: valores desde 0 a 59.
