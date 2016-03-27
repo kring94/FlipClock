@@ -27,8 +27,10 @@ function iniciarTemporizador(horaServidor) {
      * horas: valores desde 0 (12 AM) a 23 (11 PM).
      * minutos: valores desde 0 a 59.
      * segundos: valores desde 0 a 59.
+     *
+     * Si fechaFinal es menor a fechaHoy el contador se mostrará paralizado.
      */
-    var fechaFinal = new Date(2016, 2, 27, 23, 59, 59);
+    var fechaFinal = new Date(2016, 11, 31, 23, 59, 59);
 
     // Usando la hora del cliente
     var fechaHoy = new Date();
