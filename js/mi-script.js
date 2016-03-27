@@ -1,45 +1,60 @@
-$(document).on('ready', function(){
+$(document).on('ready', function () {
 
-// Iniciar tomando la hora del cliente
-iniciarTemporizador();
+    // Iniciar tomando la hora del cliente
+    iniciarTemporizador();
 
-// Iniciar tomando la hora del servidor
-/*
-    var dominio = 'http://localhost:8888';
+    // Iniciar tomando la hora del servidor
+    /*
+     var dominio = 'http://localhost:8888';
 
-    var servidor = $.get(dominio +'/hora.php', function(data){
-        horaServidor = data;
-        iniciarTemporizador(horaServidor);
-    });
-*/
+     var servidor = $.get(dominio +'/hora.php', function(data){
+     horaServidor = data;
+     iniciarTemporizador(horaServidor);
+     });
+     */
 
 });
 
 function iniciarTemporizador(horaServidor) {
 
-	var fechaFinal = new Date(2016, 11, 31, 23, 59, 59);
+    /**
+     * Fecha en la que el contador marcará cero.
+     *
+     * Date(año, mes, dia, minutos, segundos).
+     *
+     * año: número enero, ejemplo: 2016
+     * mes: valores desde 0 (enero) a 11 (diciembre).
+     * horas: valores desde 0 (12 AM) a 23 (11 PM).
+     * minutos: valores desde 0 a 59.
+     * segundos: valores desde 0 a 59.
+     */
+    var fechaFinal = new Date(2016, 2, 27, 23, 59, 59);
+
+    // Usando la hora del cliente
     var fechaHoy = new Date();
 
-    // Para obtener la hora del servidor
+    // Usando la hora del servidor
     /*
-    var fechaHoy = new Date(horaServidor);
-    */
+     var fechaHoy = new Date(horaServidor);
+     */
 
-	var diferenciaMilisegundos = fechaFinal.getTime() - fechaHoy.getTime();
-	var diferenciaSegundos = (diferenciaMilisegundos/1000);
+    var diferenciaMilisegundos = fechaFinal.getTime() - fechaHoy.getTime();
+    var diferenciaSegundos = (diferenciaMilisegundos / 1000);
 
-	var clock = $("#mi-reloj").FlipClock({
-    	clockFace: 'DailyCounter',
+    var clock = $("#mi-reloj").FlipClock({
+        clockFace: 'DailyCounter',
         callbacks: {
             interval: redireccionar
         },
-	});
+    });
 
-	clock.setTime(diferenciaSegundos);
-	clock.setCountdown(true);
+    clock.setTime(diferenciaSegundos);
+    clock.setCountdown(true);
 
-    function redireccionar()
-    {
+    /*
+     * Para cuando el contador llegue a cero.
+     */
+    function redireccionar() {
         if (clock.getTime() <= 0) {
             window.location.replace('http://adsiar.com');
         }
